@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #f4f7fb;
+  background: #070b12;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: #070b12;
+  overflow-x: hidden;
+}
+
+button,
+a {
+  font-family: inherit;
+}
+
+::selection {
+  background: #22d3ee;
+  color: #070b12;
+}
+
+@keyframes scanColor {
+  0% {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  10% {
+    clip-path: inset(0 0 90% 0);
+  }
+
+  45% {
+    clip-path: inset(0 0 0 0);
+  }
+
+  55% {
+    clip-path: inset(0 0 0 0);
+  }
+
+  90% {
+    clip-path: inset(90% 0 0 0);
+  }
+
+  100% {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  45% {
+    transform: translateY(620px);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(620px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(620px);
+    opacity: 0;
+  }
+}
+
+.animate-scan-color {
+  animation: scanColor 5s ease-in-out infinite;
+}
+
+.animate-scan-line {
+  animation: scanLine 5s ease-in-out infinite;
+}
