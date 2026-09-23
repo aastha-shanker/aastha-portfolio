@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import aasthaImage from '../assets/aastha.png'
 
 function About() {
   const [isDesktop, setIsDesktop] = useState(false)
@@ -82,7 +83,7 @@ function About() {
 
       {/* BASE — ALWAYS GREYSCALE */}
       <img
-        src="/src/assets/aastha.png"
+        src={aasthaImage}
         alt="Aastha Shanker"
         className="
           absolute
