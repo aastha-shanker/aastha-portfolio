@@ -28,10 +28,10 @@ function About() {
         {/* PHOTO */}
        {/* PHOTO */}
 <motion.div
-  initial={{ opacity: 0, x: isDesktop ? -300 : 0 }}
+  initial={{ opacity: 0, x: isDesktop ? -220 : 0 }}
   whileInView={{
     opacity: 1,
-    x: isDesktop ? -300 : 0,
+    x: isDesktop ? -220 : 0,
   }}
   viewport={{ once: true, amount: 0.25 }}
   transition={{ duration: 1, ease: 'easeOut' }}
@@ -69,15 +69,10 @@ function About() {
     <div
       className="
         relative
-        h-[420px]
-        w-[295px]
-        overflow-hidden
-        sm:h-[520px]
-        sm:w-[370px]
-        lg:h-[520px]
-        lg:w-[370px]
-        xl:h-[620px]
-        xl:w-[430px]
+       h-[340px] w-[240px]
+sm:h-[420px] sm:w-[300px]
+lg:h-[440px] lg:w-[315px]
+xl:h-[500px] xl:w-[350px]
       "
     >
 
@@ -188,7 +183,7 @@ function About() {
           initial={{ opacity: 0, x: isDesktop ? 300 : 0 }}
           whileInView={{
             opacity: 1,
-            x: isDesktop ? 300 : 0,
+            x: isDesktop ? 220 : 0,
           }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{
@@ -199,14 +194,15 @@ function About() {
           className="
             relative
             mx-auto
-            max-w-[700px]
+            
             pb-20
             pt-16
             sm:pt-20
             lg:absolute
-            lg:left-1/2
+            lg:left-1/3
             lg:top-1/2
-            lg:w-[560px]
+            max-w-[620px]
+lg:w-[480px]
             lg:max-w-none
             lg:-translate-y-1/2
             lg:pb-0
@@ -217,13 +213,14 @@ function About() {
           <h2
             className="
               font-['Space_Grotesk']
-              text-[2.4rem]
+              
               font-semibold
               leading-[0.98]
               tracking-[-0.04em]
               text-white
-              sm:text-[3.2rem]
-              lg:text-[3.8rem]
+              text-[2rem]
+sm:text-[2.1rem]
+lg:text-[2.6rem]
             "
           >
             I BUILD WITH
@@ -241,13 +238,12 @@ function About() {
           {/* Paragraph */}
           <div
             className="
-              mt-7
-              space-y-5
-              text-sm
-              leading-7
-              text-white/55
-              sm:text-[15px]
-              sm:leading-7
+              mt-5
+space-y-4
+text-[13px]
+leading-6
+sm:text-sm
+sm:leading-6
             "
           >
             <p>
@@ -277,20 +273,23 @@ function About() {
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
             className="
-              mt-9
+              mt-10
               inline-flex
-              h-[55px]
-              w-[130px]
+              h-[40px]
+w-[105px]
+border-2
+text-[11px]
+tracking-[0.14em]
               items-center
               justify-center
               rounded-full
-              border-[3px]
+              
               border-cyan-400
               bg-[#0d0818]
               text-xs
               font-bold
               uppercase
-              tracking-[0.16em]
+              
               text-cyan-300
               shadow-[inset_8px_-8px_30px_rgba(34,211,238,0.35),0_0_24px_rgba(34,211,238,0.12)]
               transition-all

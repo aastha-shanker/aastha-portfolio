@@ -118,11 +118,11 @@ function ProjectCard({ project, duplicate = false }) {
       key={`${project.number}-${duplicate ? 'duplicate' : 'original'}`}
       whileHover={{ scale: 1.01 }}
       transition={{ duration: 0.3 }}
-      className="group flex w-[285px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-all duration-500 hover:border-cyan-400/30 hover:bg-white/[0.04] sm:w-[370px] lg:w-[450px]"
+      className="group flex w-[255px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-all duration-500 hover:border-cyan-400/30 hover:bg-white/[0.04] sm:w-[320px] lg:w-[380px]"
     >
       {/* Project Image */}
-       <div className="p-4 pb-0 sm:p-6 sm:pb-0">
-        <div className="relative h-[190px] overflow-hidden rounded-xl border border-white/10 bg-[#0B111A] sm:h-[250px]">
+       <div className="p-3 pb-0 sm:p-4 sm:pb-0">
+        <div className="relative h-[155px] overflow-hidden rounded-xl border border-white/10 bg-[#0B111A] sm:h-[205px]">
           {project.image ? (
             <img
               src={project.image}
@@ -146,7 +146,7 @@ function ProjectCard({ project, duplicate = false }) {
           <div className="pointer-events-none absolute inset-0 bg-cyan-400/[0.04] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
           {/* Scan Line */}
-          <div className="pointer-events-none absolute left-0 top-0 h-px w-full -translate-y-full bg-cyan-300 opacity-0 shadow-[0_0_15px_#22d3ee] transition-all duration-1000 group-hover:translate-y-[190px] group-hover:opacity-100 sm:group-hover:translate-y-[250px]" />
+          <div className="pointer-events-none absolute left-0 top-0 h-px w-full -translate-y-full bg-cyan-300 opacity-0 shadow-[0_0_15px_#22d3ee] transition-all duration-1000 group-hover:translate-y-[155px] group-hover:opacity-100 sm:group-hover:translate-y-[205px]" />
 
           {/* Border */}
           <div className="pointer-events-none absolute inset-0 border border-white/[0.06] transition-colors duration-500 group-hover:border-cyan-400/20" />
@@ -154,34 +154,34 @@ function ProjectCard({ project, duplicate = false }) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col gap-4 p-4 pb-6 sm:gap-5 sm:p-6 sm:pb-8 sm:translate-x-1.5">
+      <div className="flex flex-1 flex-col gap-3 p-3 pb-5 sm:gap-4 sm:p-4 sm:pb-6 sm:translate-x-1.5">
         <div className="flex flex-col gap-3">
 
           {/* Title + Ongoing */}
           <div className="flex items-start justify-between gap-1">
-            <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-white transition-colors duration-300 group-hover:text-cyan-400 sm:text-2xl">
+            <h3 className="font-['Space_Grotesk'] text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cyan-400 sm:text-xl">
               {project.title}
             </h3>
 
             {project.status && (
-              <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-3 text-[10px] font-extrabold uppercase tracking-[0.15em] text-cyan-400 w-20 text-center -translate-x-6">
+              <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.15em] text-cyan-400 w-16 text-center -translate-x-2">
                 {project.status}
               </span>
             )}
           </div>
 
           {/* Description */}
-          <p className="text-xs leading-6 text-white/50 sm:text-sm sm:leading-7">
+          <p className="text-[11px] leading-5 text-white/50 sm:text-xs sm:leading-6">
             {project.description}
           </p>
         </div>
 
         {/* Tech */}
-        <div className="flex flex-wrap gap-2.5">
+        <div className="flex flex-wrap gap-2">
           {project.tech.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-white/40"
+              className="rounded-full border border-white/10 px-2.5 py-1 text-[9px] uppercase tracking-[0.12em] text-white/40"
             >
               {tech}
             </span>
@@ -198,7 +198,7 @@ function ProjectCard({ project, duplicate = false }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-[80px] items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-[12px] uppercase tracking-[0.12em] text-white/60 transition-all duration-300 hover:border-cyan-400/40 hover:text-cyan-400"
+            className="flex w-[72px] items-center gap-1.5 rounded-full border border-white/10 px-3 py-2 text-[10px] uppercase tracking-[0.12em] text-white/60 transition-all duration-300 hover:border-cyan-400/40 hover:text-cyan-400"
           >
             <GithubIcon />
             GitHub
@@ -210,7 +210,7 @@ function ProjectCard({ project, duplicate = false }) {
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-w-[80px] items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 text-xs font-medium uppercase tracking-[0.12em] text-black transition-all duration-300 hover:bg-cyan-300"
+              className="inline-flex min-w-[70px] items-center justify-center gap-1.5 rounded-full bg-cyan-400 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.12em] text-black transition-all duration-300 hover:bg-cyan-300"
             >
               Live
               <ExternalLinkIcon />
@@ -226,7 +226,7 @@ function Projects() {
  return (
   <section
     id="projects"
-    className="relative min-h-screen overflow-hidden bg-[#070B12] pt-12 pb-16 lg:overflow-visible lg:translate-x-25 lg:translate-y-25"
+    className="relative min-h-screen overflow-hidden bg-[#070B12] pt-10 pb-0 lg:overflow-visible lg:translate-x-[2.5rem] lg:translate-y-[3rem]"
   >
     <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
 
@@ -234,13 +234,13 @@ function Projects() {
       <div>
         
 
-        <h2 className="mb-8 text-center font-['Space_Grotesk'] text-[2.2rem] font-semibold leading-[1] tracking-[-0.035em] sm:mb-12 sm:text-5xl lg:text-6xl">
+        <h2 className="mb-6 text-center font-['Space_Grotesk'] text-[1.9rem] font-semibold leading-[1] tracking-[-0.035em] sm:mb-8 sm:text-4xl lg:text-5xl">
           THINGS I'VE
           <span className="text-cyan-400"> BUILT.</span>
         </h2>
       </div>
 
-      <div className="h-8" />
+      <div className="h-3" />
 
       {/* Infinite Project Movement */}
       <div className="overflow-hidden pb-6">

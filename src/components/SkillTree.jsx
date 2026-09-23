@@ -404,23 +404,23 @@ function SkillTree() {
     <div
       id="skills"
 
-     className="relative mx-auto flex max-w-[1200px] flex-col items-center justify-center gap-10 px-5 py-16 lg:flex-row lg:gap-1 lg:-mt-16 lg:px-0 lg:py-0">
+     className="relative mx-auto flex max-w-[1050px] flex-col items-center justify-center gap-8 px-5 pt-0 pb-44 lg:flex-row lg:gap-0 lg:-mt-10 lg:px-0 lg:py-0">
       
       {/* Tree */}
-      <div className="relative h-[420px] w-full max-w-[420px] sm:h-[520px] sm:max-w-[520px] lg:h-[550px] lg:w-[540px] lg:max-w-full">
+      <div className="relative h-[350px] w-full max-w-[350px] sm:h-[430px] sm:max-w-[430px] lg:h-[470px] lg:w-[460px] lg:max-w-full">
       {/* tree atmosphere */}
-      <div className="pointer-events-none absolute left-1/2 top-[42%] h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-cyan-400/[0.055] blur-[90px] sm:h-[430px] sm:w-[430px] sm:blur-[115px]" />
+      <div className="pointer-events-none absolute left-1/2 top-[42%] h-[240px] w-[240px] -translate-x-1/2 rounded-full bg-cyan-400/[0.055] blur-[70px] sm:h-[340px] sm:w-[340px] sm:blur-[95px]" />
 <div>
         
 
-        <h2 className="mb-8 text-center font-['Space_Grotesk'] text-[2rem] font-semibold leading-[1] tracking-[-0.035em] sm:mb-16 sm:text-5xl lg:translate-x-100 lg:text-6xl">
-  Technologies I <span className="text-cyan-400"> build </span>  with
+        <h2 className="mb-8 text-center font-['Space_Grotesk'] text-[1.75rem] font-semibold leading-[1] tracking-[-0.035em] sm:mb-10 sm:text-4xl lg:translate-x-[15rem] lg:text-5xl">
+  Technologies I <span className="text-cyan-400"> build </span>with
 </h2>
       </div>
       <svg
       
         viewBox="0 0 520 550"
-        className="relative h-full w-full overflow-visible translate-y-8 sm:translate-y-12 lg:translate-y-20"
+        className="relative h-full w-full overflow-visible translate-y-5 sm:translate-y-8 lg:translate-y-12"
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* ================================================= */}
@@ -856,10 +856,10 @@ C 325 15 340 20 350 40
 
 
       {/* Skill panel */}
-      <div className="w-full max-w-[360px] shrink-0 text-center lg:w-[360px] lg:max-w-none lg:translate-y-30 lg:translate-x-40">
+      <div className="w-full max-w-[330px] shrink-0 text-center lg:w-[330px] lg:max-w-none lg:translate-y-[8rem] lg:translate-x-[5rem]">
         <div
   className={`
-    relative overflow-hidden rounded-2xl border mt-6 w-full min-h-[360px] px-4 pb-6 pt-5 sm:rounded-3xl sm:min-h-[390px] sm:px-6 lg:w-[720px] lg:h-[430px] lg:px-0 lg:pb-12
+    relative overflow-hidden rounded-2xl border mt-4 w-full min-h-[320px] px-3 pb-5 pt-4 sm:rounded-3xl sm:min-h-[340px] sm:px-5 lg:w-[560px] lg:h-[360px] lg:px-0 lg:pb-8
     backdrop-blur-xl
     transition-all duration-500
     ${
@@ -875,21 +875,21 @@ C 325 15 340 20 350 40
     x: activeSkill ? '100%' : '-100%',
   }}
   transition={{ duration: 0.8, ease: 'easeOut' }}
-  className="pointer-events-none absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-cyan-300/[0.06] to-transparent blur-xl lg:w-624"
+  className="pointer-events-none absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-cyan-300/[0.06] to-transparent blur-xl lg:w-[35rem]"
 />         
-          <div className="mb-5">
-            <p className="text-[15px] font-bold uppercase tracking-[0.3em] text-cyan-400 text-center translate-y-1">
+          <div className="mb-4">
+            <p className="text-[13px] font-bold uppercase tracking-[0.24em] text-cyan-400 text-center translate-y-1">
               Technical Skills
             </p>
            
           </div>
 
-          <div className="grid grid-cols-2 gap-2 translate-y-1 sm:grid-cols-3 sm:gap-3 lg:translate-x-1">
+          <div className="grid grid-cols-2 gap-2 translate-y-1 sm:grid-cols-3 sm:gap-2.5 lg:translate-x-1">
             {skills.map((skill) => (
               <div
   key={skill.id}
   className={`
-    className="flex h-10 items-center justify-center rounded-xl border px-3 py-2 text-center sm:h-11 lg:w-55 lg:h-8 lg:ml-2 lg:px-5 lg:py-5
+    flex h-9 items-center justify-center rounded-xl border px-2.5 py-1.5 text-center sm:h-10 lg:ml-2 lg:h-8 lg:w-[10rem] lg:px-3 lg:py-4
     ${
       activeSkill === skill.id
         ? 'border-cyan-400/60 bg-cyan-400/[0.08] shadow-[0_0_22px_rgba(34,211,238,0.18)]'
@@ -899,7 +899,7 @@ C 325 15 340 20 350 40
 >
   <span
     className={`
-      text-xs font-semibold transition-colors duration-300 sm:text-sm
+      text-[11px] font-semibold transition-colors duration-300 sm:text-xs
       ${
         activeSkill === skill.id
           ? 'text-cyan-300'

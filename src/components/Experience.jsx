@@ -42,24 +42,27 @@ function Experience() {
   return (
     <section
   id="experience"
-  className="relative bg-[#070B12] pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-16 lg:pb-24"
+  className="relative bg-[#070B12] pt-64 pb-16 sm:pt-16 sm:pb-20 lg:pt-16 lg:pb-24"
 >
-      <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-7 lg:px-10">
 
         {/* Heading */}
         <h2
           className="
   text-center
   font-['Space_Grotesk']
-  text-[2rem]
+ text-[1.75rem]
+sm:text-4xl
+lg:translate-x-[460px]
+lg:text-5xl
   font-semibold
   leading-[1]
   tracking-[-0.035em]
-  sm:text-5xl
+  
   lg:mb-6
-  lg:translate-x-[620px]
+  
   lg:text-left
-  lg:text-6xl
+  
 "
         >
           MY JOURNEY{' '}
@@ -71,26 +74,31 @@ function Experience() {
         {/* Toggle */}
         <div
           className="
-  mt-10
+  mt-8
+sm:mt-10
+lg:mt-16
+lg:translate-x-16
+lg:translate-y-2
   flex
   justify-center
-  sm:mt-14
-  lg:mt-28
-  lg:translate-x-28
-  lg:translate-y-5
+  
 "
         >
           <div
             className="
               flex
               w-full
-              max-w-[420px]
+              max-w-[360px]
+p-1
+sm:p-1.5
+py-2
+text-[10px]
+sm:text-xs
               rounded-full
               border
               border-white/10
               bg-white/[0.03]
-              p-1.5
-              sm:p-2
+              
             "
           >
             <button
@@ -146,16 +154,17 @@ function Experience() {
         <div
           className="
             mx-auto
-            mt-16
+            mt-12
+sm:mt-14
+lg:mt-16
+lg:translate-x-90
+lg:translate-y-10
             flex
             justify-center
-            sm:mt-20
-            lg:mt-24
-            lg:translate-x-100
-            lg:translate-y-20
+            
           "
         >
-          <div className="w-full max-w-[700px]">
+          <div className="w-full max-w-[660px]">
 
             {data.map((item, index) => (
               <div
@@ -163,12 +172,12 @@ function Experience() {
                 className="
   relative
   flex
-  min-h-[140px]
-  gap-4
-  sm:min-h-[180px]
-  sm:gap-8
-  lg:min-h-[210px]
-  lg:gap-10
+  min-h-[115px]
+gap-3
+sm:min-h-[140px]
+sm:gap-6
+lg:min-h-[160px]
+lg:gap-7
 "
               >
 
@@ -196,12 +205,12 @@ function Experience() {
                     <div
                       className="
                         absolute
-                        top-5
-                        h-[160px]
+                        top-3
+                        h-[110px]
                         w-px
                         bg-white/10
-                        sm:h-[180px]
-                        lg:h-[190px]
+                        sm:h-[100px]
+                        lg:h-[150px]
                       "
                     />
                   )}
@@ -217,8 +226,8 @@ function Experience() {
   font-semibold
   leading-tight
   text-white
-  sm:text-2xl
-  lg:text-3xl
+  sm:text-xl
+  lg:text-2xl
 "
                   >
                     {item.role}
@@ -238,12 +247,12 @@ function Experience() {
                   <p
                     className="
   mt-2
-  text-[9px]
+  text-sm
   uppercase
   tracking-[0.1em]
   text-white/40
   sm:mt-3
-  sm:text-sm
+  sm:text-base
   sm:tracking-[0.2em]
 "
                   >

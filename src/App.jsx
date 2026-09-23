@@ -5,6 +5,7 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import SkillTree from './components/SkillTree'
 import Contact from './components/Contact'
+import ContactForm from './components/contactform'
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Projects />
         <SkillTree />
         <Contact />
+        
+
       </main>
     </div>
   )

@@ -28,7 +28,7 @@ function Hero() {
     >
       {/* Background atmosphere */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/[0.035] blur-[100px] sm:h-[600px] sm:w-[600px] sm:blur-[140px]" />
+        <div className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/[0.035] blur-[80px] sm:h-[460px] sm:w-[460px] sm:blur-[110px]" />
 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#070B12_75%)]" />
       </div>
@@ -36,8 +36,8 @@ function Hero() {
       <SocialLinks />
 
       {/* Main Hero */}
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[1500px] items-center px-5 pt-24 pb-16 sm:px-8 sm:pt-20 lg:px-10 lg:py-0">
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[300px_420px_300px] lg:justify-center lg:gap-6 lg:gap-y-0">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[1250px] items-center px-5 pt-36 pb-12 sm:px-8 sm:pt-18 lg:px-8 lg:py-0">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[250px_340px_250px] lg:justify-center lg:gap-5 lg:gap-y-0">
 
           {/* LEFT — NAME */}
           <motion.div
@@ -50,11 +50,11 @@ function Hero() {
             }}
             className="order-2 text-center lg:order-1 lg:text-right"
           >
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-cyan-400/80 sm:text-[17px] sm:tracking-[0.3em] lg:text-right">
+            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.24em] text-cyan-400/80 sm:text-sm sm:tracking-[0.26em] lg:text-right">
               Hello, I'm
             </p>
 
-            <h1 className="font-['Space_Grotesk'] text-[3.2rem] font-semibold leading-[0.9] tracking-[-0.05em] sm:text-6xl lg:text-7xl xl:text-[5.8rem]">
+            <h1 className="font-['Space_Grotesk'] text-[2.65rem] font-semibold leading-[0.9] tracking-[-0.05em] sm:text-5xl lg:text-6xl xl:text-[4.8rem]">
               <span className="block text-white/90">
                 Aastha
               </span>
@@ -73,7 +73,7 @@ function Hero() {
               duration: 1,
               ease: 'easeOut',
             }}
-            className="group order-1 flex justify-center lg:order-2 lg:translate-x-24"
+            className="group order-1 flex justify-center lg:order-2 lg:translate-x-[2rem]"
           >
             <div className="relative">
 
@@ -84,12 +84,12 @@ function Hero() {
                   inset-[-12%]
                   rounded-full
                   bg-cyan-400/[0.07]
-                  blur-[55px]
+                  blur-[45px]
                   transition-all
                   duration-700
                   group-hover:bg-cyan-400/[0.13]
                   sm:inset-[-15%]
-                  sm:blur-[80px]
+                  sm:blur-[65px]
                 "
               />
 
@@ -97,15 +97,15 @@ function Hero() {
               <div
                 className="
                   relative
-                  h-[390px]
-                  w-[275px]
+                  h-[325px]
+                  w-[230px]
                   overflow-hidden
-                  sm:h-[520px]
-                  sm:w-[370px]
-                  lg:h-[520px]
-                  lg:w-[370px]
-                  xl:h-[620px]
-                  xl:w-[430px]
+                  sm:h-[430px]
+                  sm:w-[305px]
+                  lg:h-[440px]
+                  lg:w-[315px]
+                  xl:h-[500px]
+                  xl:w-[350px]
                 "
               >
                 <img
@@ -156,11 +156,11 @@ function Hero() {
                     shadow-[0_0_18px_#22d3ee]
                     transition-all
                     duration-1000
-                    group-hover:translate-y-[390px]
+                    group-hover:translate-y-[325px]
                     group-hover:opacity-100
-                    sm:group-hover:translate-y-[520px]
-                    lg:group-hover:translate-y-[520px]
-                    xl:group-hover:translate-y-[620px]
+                    sm:group-hover:translate-y-[430px]
+                    lg:group-hover:translate-y-[440px]
+                    xl:group-hover:translate-y-[500px]
                   "
                 />
 
@@ -179,14 +179,14 @@ function Hero() {
               ease: 'easeOut',
               delay: 0.3,
             }}
-            className="order-3 text-center lg:translate-x-30 lg:text-left"
+            className="order-3 text-center lg:translate-x-[2.5rem] lg:text-left"
           >
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-white/90 sm:mb-5 sm:tracking-[0.35em]">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.26em] text-white/90 sm:mb-4 sm:tracking-[0.3em]">
               I am a
             </p>
 
             {/* Role */}
-            <div className="relative mx-auto min-h-[75px] max-w-[330px] overflow-hidden sm:min-h-[100px] lg:mx-0 lg:min-h-[145px] lg:max-w-none">
+            <div className="relative mx-auto min-h-[62px] max-w-[300px] overflow-hidden sm:min-h-[82px] lg:mx-0 lg:min-h-[112px] lg:max-w-none">
               <AnimatePresence mode="wait">
                 <motion.h2
                   key={roles[roleIndex]}
@@ -203,14 +203,14 @@ function Hero() {
                     top-0
                     w-full
                     font-['Space_Grotesk']
-                    text-[2rem]
+                    text-[1.65rem]
                     font-semibold
                     leading-[1.05]
                     tracking-[-0.04em]
                     text-cyan-400
-                    sm:text-4xl
+                    sm:text-3xl
                     lg:w-auto
-                    lg:text-[3.4rem]
+                    lg:text-[2.65rem]
                   "
                 >
                   {roles[roleIndex]}
@@ -218,7 +218,7 @@ function Hero() {
               </AnimatePresence>
             </div>
 
-            <p className="mx-auto max-w-[320px] text-sm leading-6 text-white/70 sm:text-sm lg:mx-0 lg:max-w-[340px] lg:text-white/90">
+            <p className="mx-auto max-w-[290px] text-xs leading-5 text-white/70 sm:text-sm sm:leading-6 lg:mx-0 lg:max-w-[300px] lg:text-white/90">
               Building intelligent, scalable and meaningful digital
               experiences through code, data and design.
             </p>
