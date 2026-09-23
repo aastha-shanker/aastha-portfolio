@@ -116,7 +116,7 @@ function About() {
         }}
       >
         <img
-          src="/src/assets/aastha.png"
+          src={aasthaImage}
           alt=""
           className="
             h-full
