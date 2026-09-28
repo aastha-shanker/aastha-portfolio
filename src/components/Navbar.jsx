@@ -9,22 +9,37 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleNavClick = (event, item) => {
-    event.preventDefault()
-    setActive(item)
-    setIsOpen(false)
+  event.preventDefault()
 
+  setActive(item)
+  setIsOpen(false)
+
+  setTimeout(() => {
     const section = document.getElementById(item.toLowerCase())
 
-    if (section) {
-      section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
+    if (!section) return
 
-      window.history.replaceState(null, '', `#${item.toLowerCase()}`)
-    }
-  }
+    const navbar = document.querySelector('nav')
+    const navHeight = navbar ? navbar.offsetHeight : 100
 
+    const y =
+      section.getBoundingClientRect().top +
+      window.pageYOffset -
+      navHeight -
+      20
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth',
+    })
+
+    window.history.replaceState(
+      null,
+      '',
+      `#${item.toLowerCase()}`
+    )
+  }, 250)
+}
   const handleHomeClick = (event) => {
     event.preventDefault()
     setActive('')
