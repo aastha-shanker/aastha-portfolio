@@ -42,7 +42,7 @@ function Experience() {
   return (
     <section
   id="experience"
-  className="relative bg-[#070B12] pt-64 pb-16 sm:pt-16 sm:pb-20 lg:pt-16 lg:pb-24"
+  className="mobile-section-anchor experience-section relative bg-[#070B12] pt-64 pb-16 sm:pt-16 sm:pb-20 lg:pt-16 lg:pb-24"
 >
       <div className="mx-auto max-w-[1200px] px-5 sm:px-7 lg:px-10">
 
@@ -73,7 +73,7 @@ lg:text-5xl
 
         {/* Toggle */}
         <div
-          className="
+          className="experience-tabs
   mt-8
 sm:mt-10
 lg:mt-16
@@ -152,7 +152,7 @@ sm:text-xs
 
         {/* Timeline */}
         <div
-          className="
+          className="experience-timeline
             mx-auto
             mt-12
 sm:mt-14

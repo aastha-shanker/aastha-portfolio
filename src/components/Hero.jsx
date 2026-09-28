@@ -24,7 +24,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden lg:overflow-visible"
+      className="hero-section relative min-h-screen overflow-hidden lg:overflow-visible scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28"
     >
       {/* Background atmosphere */}
       <div className="pointer-events-none absolute inset-0">
@@ -36,7 +36,7 @@ function Hero() {
       <SocialLinks />
 
       {/* Main Hero */}
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[1250px] items-center px-5 pt-36 pb-12 sm:px-8 sm:pt-18 lg:px-8 lg:py-0">
+      <div className="hero-content relative mx-auto flex min-h-screen w-full max-w-[1250px] items-center px-5 pt-36 pb-12 sm:px-8 sm:pt-18 lg:px-8 lg:py-0">
         <div className="grid w-full items-center gap-8 lg:grid-cols-[250px_340px_250px] lg:justify-center lg:gap-5 lg:gap-y-0">
 
           {/* LEFT — NAME */}
@@ -181,12 +181,12 @@ function Hero() {
             }}
             className="order-3 text-center lg:translate-x-[2.5rem] lg:text-left"
           >
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.26em] text-white/90 sm:mb-4 sm:tracking-[0.3em]">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.26em] text-white/90 sm:mb-4 sm:tracking-[0.3em] lg:translate-x-[6rem]">
               I am a
             </p>
 
             {/* Role */}
-            <div className="relative mx-auto min-h-[62px] max-w-[300px] overflow-hidden sm:min-h-[82px] lg:mx-0 lg:min-h-[112px] lg:max-w-none">
+            <div className="hero-role relative mx-auto min-h-[62px] w-full max-w-[280px] min-[360px]:max-w-[320px] overflow-hidden sm:min-h-[82px] sm:max-w-[360px] lg:mx-0 lg:min-h-[112px] lg:max-w-none">
               <AnimatePresence mode="wait">
                 <motion.h2
                   key={roles[roleIndex]}
@@ -197,11 +197,12 @@ function Hero() {
                     duration: 0.45,
                     ease: 'easeOut',
                   }}
-                  className="
+                  className="hero-role-heading
                     absolute
-                    left-0
+                    inset-x-0
                     top-0
                     w-full
+                    text-center
                     font-['Space_Grotesk']
                     text-[1.65rem]
                     font-semibold
@@ -218,7 +219,7 @@ function Hero() {
               </AnimatePresence>
             </div>
 
-            <p className="mx-auto max-w-[290px] text-xs leading-5 text-white/70 sm:text-sm sm:leading-6 lg:mx-0 lg:max-w-[300px] lg:text-white/90">
+            <p className="mx-auto w-full text-xs text-center inset-x-0 leading-5 text-white/70 sm:text-sm sm:leading-6 lg:mx-0 lg:max-w-[300px] lg:text-white/90">
               Building intelligent, scalable and meaningful digital
               experiences through code, data and design.
             </p>

@@ -1,3 +1,5 @@
+import { useState, useCallback } from 'react'
+
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -5,23 +7,41 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import SkillTree from './components/SkillTree'
 import Contact from './components/Contact'
-import ContactForm from './components/contactform'
+
+import LoadingScreen from './components/LoadingScreen'
+import AmbientBackground from './components/AmbientBackground'
 
 function App() {
+  const [loading, setLoading] = useState(true)
+
+  const handleLoadingComplete = useCallback(() => {
+    setLoading(false)
+  }, [])
+
+  if (loading) {
+    return <LoadingScreen onFinish={handleLoadingComplete} />
+  }
+
   return (
-    <div className="min-h-screen bg-[#070B12] text-white">
-      <Navbar />
+    <div className="relative min-h-screen bg-[#070B12] text-white">
 
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <SkillTree />
-        <Contact />
-        
+      {/* Background stays completely independent of page layout */}
+      <AmbientBackground />
 
-      </main>
+      {/* Portfolio */}
+      <div className="relative z-10">
+        <Navbar />
+
+        <main>
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <SkillTree />
+          <Contact />
+        </main>
+      </div>
+
     </div>
   )
 }

@@ -96,3 +96,64 @@ a {
 .animate-scan-line {
   animation: scanLine 5s ease-in-out infinite;
 }
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 96px;
+  }
+
+  .mobile-section-anchor {
+    scroll-margin-top: 96px;
+  }
+
+  .hero-role,
+  .hero-role-heading {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-role-heading {
+    left: 0;
+    right: 0;
+  }
+
+  .about-copy {
+    padding-top: 6rem;
+  }
+
+  .about-section,
+  .about-section > div {
+    min-height: auto;
+  }
+
+  .hero-section,
+  .hero-content {
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding-top: 6rem;
+  }
+
+  .experience-section {
+    padding-top: 2rem;
+  }
+
+  .experience-tabs {
+    margin-top: 3rem;
+  }
+
+  .experience-timeline {
+    margin-top: 4rem;
+    width: 100%;
+  }
+
+  .projects-section {
+    min-height: 0;
+  }
+
+  .skills-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}

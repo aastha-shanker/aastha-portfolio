@@ -126,7 +126,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative mx-auto w-full max-w-[1200px] px-5 py-24 sm:px-8 sm:py-20 lg:translate-x-20 lg:translate-y-60 lg:px-16 lg:py-32"
+      className="mobile-section-anchor relative mx-auto w-full max-w-[1200px] px-5 py-24 sm:px-8 sm:py-20 lg:translate-x-20 lg:translate-y-60 lg:px-16 lg:py-32"
     >
       {/* Heading */}
 
@@ -327,13 +327,7 @@ function Contact() {
                 <LinkedinIcon className="h-[17px] w-[17px]" />
               </a>
 
-              <a
-                href="#"
-                aria-label="Twitter"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/15 bg-white/5 text-white transition-all duration-300 hover:border-cyan-300/40 hover:bg-cyan-400/10 hover:text-cyan-200 sm:h-11 sm:w-11"
-              >
-                <TwitterIcon className="h-[17px] w-[17px]" />
-              </a>
+              
 
               <a
                 href={`mailto:${email}`}
@@ -344,12 +338,15 @@ function Contact() {
               </a>
 
               <a
-                href="#"
-                aria-label="Resume"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/15 bg-white/5 text-white transition-all duration-300 hover:border-cyan-300/40 hover:bg-cyan-400/10 hover:text-cyan-200 sm:h-11 sm:w-11"
-              >
-                <FileTextIcon className="h-[17px] w-[17px]" />
-              </a>
+  href="/resume.pdf"
+  download="Aastha-Shanker-Resume.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Resume"
+  className="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/15 bg-white/5 text-white transition-all duration-300 hover:border-cyan-300/40 hover:bg-cyan-400/10 hover:text-cyan-200 sm:h-11 sm:w-11"
+>
+  <FileTextIcon className="h-[17px] w-[17px]" />
+</a>
             </div>
           </div>
         </motion.div>

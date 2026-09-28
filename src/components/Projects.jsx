@@ -226,7 +226,7 @@ function Projects() {
  return (
   <section
     id="projects"
-    className="relative min-h-screen overflow-hidden bg-[#070B12] pt-10 pb-0 lg:overflow-visible lg:translate-x-[2.5rem] lg:translate-y-[3rem]"
+    className="mobile-section-anchor projects-section relative min-h-screen overflow-hidden bg-[#070B12] pt-10 pb-0 lg:overflow-visible lg:translate-x-[2.5rem] lg:translate-y-[3rem]"
   >
     <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
 

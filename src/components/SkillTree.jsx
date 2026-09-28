@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   SiJavascript,
   SiPython,
@@ -234,16 +234,22 @@ const leaves = [
 [282, 67, -20],
 ]
 
-function Leaf({ x, y, rotation, index }) {
+function Leaf({ x, y, rotation, index, animated = true }) {
+  const LeafGroup = animated ? motion.g : 'g'
+
   return (
-    <motion.g
-      initial={{ opacity: 0, scale: 0 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.4,
-        delay: 0.35 + index * 0.012,
-      }}
+    <LeafGroup
+      {...(animated
+        ? {
+            initial: { opacity: 0, scale: 0 },
+            whileInView: { opacity: 1, scale: 1 },
+            viewport: { once: true },
+            transition: {
+              duration: 0.4,
+              delay: 0.35 + index * 0.012,
+            },
+          }
+        : {})}
       style={{
         transformOrigin: `${x}px ${y}px`,
       }}
@@ -292,7 +298,7 @@ ry="3.5"
         strokeWidth="0.7"
         opacity="0.65"
       />
-    </motion.g>
+    </LeafGroup>
   )
 }
 
@@ -399,12 +405,24 @@ opacity={active ? 1 : 0.9}
 
 function SkillTree() {
   const [activeSkill, setActiveSkill] = useState(null)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 1024)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     
     <div
       id="skills"
 
-     className="relative mx-auto flex max-w-[1050px] flex-col items-center justify-center gap-8 px-5 pt-0 pb-44 lg:flex-row lg:gap-0 lg:-mt-10 lg:px-0 lg:py-0">
+     className="mobile-section-anchor skills-section relative mx-auto flex max-w-[1050px] flex-col items-center justify-center gap-8 px-5 pt-0 pb-44 lg:flex-row lg:gap-0 lg:-mt-10 lg:px-0 lg:py-0">
       
       {/* Tree */}
       <div className="relative h-[350px] w-full max-w-[350px] sm:h-[430px] sm:max-w-[430px] lg:h-[470px] lg:w-[460px] lg:max-w-full">
@@ -452,17 +470,39 @@ C 325 15 340 20 350 40
     />
   </clipPath>
 </defs>
-        <g clipPath="url(#treeCanopy)">
-  {leaves.map(([x, y, rotation], index) => (
-    <Leaf
-      key={`${x}-${y}`}
-      x={x}
-      y={y}
-      rotation={rotation}
-      index={index}
-    />
-  ))}
-</g>
+        {isMobile ? (
+          <motion.g
+            clipPath="url(#treeCanopy)"
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            style={{ transformOrigin: '260px 180px' }}
+          >
+            {leaves.map(([x, y, rotation], index) => (
+              <Leaf
+                key={`${x}-${y}`}
+                x={x}
+                y={y}
+                rotation={rotation}
+                index={index}
+                animated={false}
+              />
+            ))}
+          </motion.g>
+        ) : (
+          <g clipPath="url(#treeCanopy)">
+            {leaves.map(([x, y, rotation], index) => (
+              <Leaf
+                key={`${x}-${y}`}
+                x={x}
+                y={y}
+                rotation={rotation}
+                index={index}
+              />
+            ))}
+          </g>
+        )}
 
 
         {/* ================================================= */}

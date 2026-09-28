@@ -21,7 +21,7 @@ function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen overflow-hidden bg-[#070B12]"
+      className="about-section mobile-section-anchor relative min-h-screen overflow-hidden bg-[#070B12]"
     >
       <div className="relative mx-auto min-h-screen max-w-[1500px] px-5 sm:px-8 lg:px-10">
 
@@ -191,7 +191,7 @@ xl:h-[500px] xl:w-[350px]
             delay: 0.15,
             ease: 'easeOut',
           }}
-          className="
+          className="about-copy
             relative
             mx-auto
             
