@@ -352,7 +352,8 @@ function Contact() {
         </motion.div>
       </div>
 
-      {/* Footer */}
+      {/* Foot
+      er */}
 
       <div className="mt-16 border-t border-white/[0.06] pt-6 sm:mt-20 lg:translate-y-25  min-[1440px]:translate-x-48">
         <p className="text-center text-[8px] font-medium uppercase leading-5 tracking-[0.16em] text-white/25 sm:text-[9px] sm:tracking-[0.22em]">
