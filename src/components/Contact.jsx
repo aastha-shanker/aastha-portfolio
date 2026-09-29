@@ -172,7 +172,7 @@ function Contact() {
         >
           <form
             onSubmit={handleSubmit}
-            className="mx-auto w-full max-w-[320px] translate-x-14 rounded-3xl border border-cyan-400/15 bg-white/[0.03] p-4 backdrop-blur-md sm:max-w-[420px] sm:translate-x-0 sm:p-8 md:max-w-[520px] md:p-10 lg:max-w-none lg:translate-x-80 lg:translate-y-10 lg:p-16 min-[1440px]:translate-x-56"
+            className="mx-auto w-full max-w-[320px] translate-x-12 rounded-3xl bg-white/[0.03] p-4 backdrop-blur-md sm:max-w-[420px] sm:translate-x-0 sm:p-8 md:max-w-[520px] md:p-10 lg:max-w-none lg:translate-x-80 lg:translate-y-10 lg:p-16 min-[1440px]:translate-x-56"
           >
             {/* Form Header */}
 
