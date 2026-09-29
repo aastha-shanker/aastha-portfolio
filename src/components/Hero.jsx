@@ -24,7 +24,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="hero-section relative min-h-screen overflow-hidden lg:overflow-visible scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28"
+      className="hero-section relative min-h-screen min-[1440px]:min-h-[75vh] overflow-hidden lg:overflow-visible scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28"
     >
       {/* Background atmosphere */}
       <div className="pointer-events-none absolute inset-0">
@@ -36,7 +36,7 @@ function Hero() {
       <SocialLinks />
 
       {/* Main Hero */}
-      <div className="hero-content relative mx-auto flex min-h-screen w-full max-w-[1250px] items-center px-5 pt-36 pb-12 sm:px-8 sm:pt-18 lg:px-8 lg:py-0">
+      <div className="hero-content relative mx-auto flex min-h-screen w-full max-w-[1250px] items-center px-5 pt-36 pb-12 sm:px-8 sm:pt-18 lg:px-8 lg:py-0 min-[1440px]:max-w-[1400px] min-[1440px]:translate-x-20 min-[1920px]:max-w-[1600px] min-[1440px]:!min-h-[680px]">
         <div className="grid w-full items-center gap-8 lg:grid-cols-[250px_340px_250px] lg:justify-center lg:gap-5 lg:gap-y-0">
 
           {/* LEFT — NAME */}

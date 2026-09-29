@@ -126,7 +126,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="mobile-section-anchor relative mx-auto w-full max-w-[1200px] px-5 py-24 sm:px-8 sm:py-20 lg:translate-x-20 lg:translate-y-60 lg:px-16 lg:py-32"
+      className="mobile-section-anchor relative mx-auto w-full max-w-[1200px] px-5 py-24 sm:px-8 sm:py-20 lg:-mt-2 lg:translate-x-20 lg:translate-y-0 lg:px-16 lg:pt-16 lg:pb-32 min-[1440px]:-mt-28 "
     >
       {/* Heading */}
 
@@ -135,7 +135,7 @@ function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-12 text-center sm:mb-16 lg:mb-32"
+        className="mb-12 text-center sm:mb-16 lg:mb-32 min-[1440px]:translate-x-48"
       >
         <h2 className="font-['Space_Grotesk'] text-[2rem] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
           Let&apos;s build something
@@ -152,7 +152,7 @@ function Contact() {
 
       {/* Main Contact Area */}
 
-      <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 xl:gap-20">
+      <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 xl:gap-20 min-[1440px]:translate-x-56">
         {/* LEFT SIDE */}
 
         
@@ -172,7 +172,7 @@ function Contact() {
         >
           <form
             onSubmit={handleSubmit}
-            className="w-full rounded-3xl border border-cyan-400/15 bg-white/[0.03] p-5 backdrop-blur-md sm:p-8 md:p-10 lg:translate-x-75 lg:translate-y-10 lg:p-16"
+            className="mx-auto w-full max-w-[320px] translate-x-14 rounded-3xl border border-cyan-400/15 bg-white/[0.03] p-4 backdrop-blur-md sm:max-w-[420px] sm:translate-x-0 sm:p-8 md:max-w-[520px] md:p-10 lg:max-w-none lg:translate-x-80 lg:translate-y-10 lg:p-16 min-[1440px]:translate-x-56"
           >
             {/* Form Header */}
 
@@ -301,7 +301,7 @@ function Contact() {
 
           {/* Social Icons */}
 
-          <div className="mt-8 flex flex-col items-center gap-4 sm:mt-10 lg:translate-x-70 lg:translate-y-15">
+          <div className="mt-8 flex flex-col items-center gap-4 sm:mt-10 lg:translate-x-70 lg:translate-y-15 ">
             <span className="text-xs text-white/40 sm:text-sm">
               Or find me on
             </span>
@@ -354,7 +354,7 @@ function Contact() {
 
       {/* Footer */}
 
-      <div className="mt-16 border-t border-white/[0.06] pt-6 sm:mt-20 lg:translate-y-25">
+      <div className="mt-16 border-t border-white/[0.06] pt-6 sm:mt-20 lg:translate-y-25  min-[1440x]:translate-x-48">
         <p className="text-center text-[8px] font-medium uppercase leading-5 tracking-[0.16em] text-white/25 sm:text-[9px] sm:tracking-[0.22em]">
           © 2026 Aastha Shanker · Built with curiosity &amp; code
         </p>

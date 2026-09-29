@@ -21,11 +21,11 @@ function About() {
   return (
     <section
       id="about"
-      className="about-section mobile-section-anchor relative min-h-screen overflow-hidden bg-[#070B12]"
+      
+      className="about-section mobile-section-anchor relative min-h-screen overflow-hidden bg-[#070B12] lg:-mt-20 lg:min-h-[calc(100vh-5rem)] min-[1440px]:!-mt-28 min-[1440px]:!min-h-[560px]"
     >
-      <div className="relative mx-auto min-h-screen max-w-[1500px] px-5 sm:px-8 lg:px-10">
+      <div className="relative mx-auto min-h-screen max-w-[1500px] px-5 sm:px-8 lg:min-h-[calc(100vh-5rem)] lg:px-10 min-[1440px]:!min-h-[560px] min-[1440px]:max-w-[1700px] min-[1920px]:max-w-[1900px] min-[1440px]:translate-x-24">
 
-        {/* PHOTO */}
        {/* PHOTO */}
 <motion.div
   initial={{ opacity: 0, x: isDesktop ? -220 : 0 }}

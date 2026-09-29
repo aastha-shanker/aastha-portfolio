@@ -41,12 +41,12 @@ function Experience() {
 
   return (
     <section
-  id="experience"
-  className="mobile-section-anchor experience-section relative bg-[#070B12] pt-64 pb-16 sm:pt-16 sm:pb-20 lg:pt-16 lg:pb-24"
->
+      id="experience"
+      className="mobile-section-anchor experience-section relative bg-[#070B12] pt-64 pb-16 sm:pt-16 sm:pb-20 lg:mt-8 lg:pt-32 lg:pb-0 min-[1440px]:mt-0 min-[1440px]:!pt-24 min-[1440px]:translate-x-48"
+    >
       <div className="mx-auto max-w-[1200px] px-5 sm:px-7 lg:px-10">
 
-        {/* Heading */}
+        {/*Heading*/}
         <h2
           className="
   text-center
@@ -115,10 +115,9 @@ sm:text-xs
   transition-all
   sm:text-sm
   sm:tracking-[0.2em]
-                ${
-                  activeTab === 'work'
-                    ? 'bg-cyan-400 text-black'
-                    : 'text-white/50'
+                ${activeTab === 'work'
+                  ? 'bg-cyan-400 text-black'
+                  : 'text-white/50'
                 }
               `}
             >
@@ -138,10 +137,9 @@ sm:text-xs
                 transition-all
                 sm:text-sm
                 sm:tracking-[0.2em]
-                ${
-                  activeTab === 'cocurricular'
-                    ? 'bg-cyan-400 text-black'
-                    : 'text-white/50'
+                ${activeTab === 'cocurricular'
+                  ? 'bg-cyan-400 text-black'
+                  : 'text-white/50'
                 }
               `}
             >

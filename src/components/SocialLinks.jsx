@@ -48,7 +48,7 @@ const socialLinks = [
 
 function SocialLinks() {
   return (
-    <div className="fixed left-5 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-4 lg:flex xl:left-8">
+    <div className="fixed left-5 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-4 lg:flex xl:left-8 min-[1440px]:left-[calc(50%_-_650px)]">
 
       <div className="mb-2 h-16 w-px bg-white/10" />
 

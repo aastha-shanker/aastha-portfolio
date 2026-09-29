@@ -35,9 +35,13 @@ function App() {
         <main>
           <Hero />
           <About />
+          <div className="hidden lg:block lg:h-24 min-[1440px]:h-32" />
           <Experience />
+          <div className="hidden lg:block lg:h-24 min-[1440px]:h-32" />
           <Projects />
+          <div className="hidden lg:block lg:h-24 min-[1440px]:h-32" />
           <SkillTree />
+          <div className="hidden lg:block lg:h-24 min-[1440px]:h-32" />
           <Contact />
         </main>
       </div>

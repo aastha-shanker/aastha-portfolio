@@ -96,7 +96,7 @@ function Navbar() {
       transition={{ duration: 0.6 }}
       className="fixed inset-x-2 top-0 z-50 px-0 pt-4 sm:inset-x-7 sm:px-8 sm:pt-6 lg:px-10"
     >
-      <nav className="mx-auto flex max-w-[1200px] flex-col rounded-2xl border border-white/10 bg-[#0A0F14]/80 px-4 py-3 backdrop-blur-xl sm:px-8 sm:py-5 lg:px-10 lg:py-5">
+      <nav className="mx-auto flex max-w-[1200px] flex-col rounded-2xl border border-white/10 bg-[#0A0F14]/80 px-4 py-3 backdrop-blur-xl sm:px-8 sm:py-5 lg:px-10 lg:py-5 min-[1440px]:translate-x-56">
         <div className="flex min-h-9 w-full items-center justify-between sm:min-h-11">
 
           {/* Logo */}

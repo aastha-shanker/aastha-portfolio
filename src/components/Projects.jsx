@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-
+import { useEffect, useRef } from 'react'
 import agnidrishtiImage from '../assets/projects/agnidrishti.png'
 import koshImage from '../assets/projects/kosh.png'
 import scholarMatchImage from '../assets/projects/scholarmatch.png'
@@ -118,11 +118,11 @@ function ProjectCard({ project, duplicate = false }) {
       key={`${project.number}-${duplicate ? 'duplicate' : 'original'}`}
       whileHover={{ scale: 1.01 }}
       transition={{ duration: 0.3 }}
-      className="group flex w-[255px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-all duration-500 hover:border-cyan-400/30 hover:bg-white/[0.04] sm:w-[320px] lg:w-[380px]"
+      className="group flex w-[255px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-all duration-500 hover:border-cyan-400/30 hover:bg-white/[0.04] sm:w-[320px] lg:w-[380px]  "
     >
       {/* Project Image */}
        <div className="p-3 pb-0 sm:p-4 sm:pb-0">
-        <div className="relative h-[155px] overflow-hidden rounded-xl border border-white/10 bg-[#0B111A] sm:h-[205px]">
+        <div className="relative h-[155px] overflow-hidden rounded-xl border border-white/10 bg-[#0B111A] sm:h-[205px] ">
           {project.image ? (
             <img
               src={project.image}
@@ -223,90 +223,201 @@ function ProjectCard({ project, duplicate = false }) {
 }
 
 function Projects() {
- return (
-  <section
-    id="projects"
-    className="mobile-section-anchor projects-section relative min-h-screen overflow-hidden bg-[#070B12] pt-10 pb-0 lg:overflow-visible lg:translate-x-[2.5rem] lg:translate-y-[3rem]"
-  >
-    <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
+  const scrollerRef = useRef(null)
+  const hoverRef = useRef(false)
+  const touchHoldRef = useRef(false)
+  const draggingRef = useRef(false)
+  const dragMovedRef = useRef(false)
+  const dragStartRef = useRef({ x: 0, left: 0, id: null })
+  const resumeTimerRef = useRef(null)
 
-      {/* Heading */}
-      <div>
-        
+  // Auto-scroll loop (same speed as before: 45s mobile, 35s desktop)
+  useEffect(() => {
+    const el = scrollerRef.current
+    if (!el) return
 
-        <h2 className="mb-6 text-center font-['Space_Grotesk'] text-[1.9rem] font-semibold leading-[1] tracking-[-0.035em] sm:mb-8 sm:text-4xl lg:text-5xl">
-          THINGS I'VE
-          <span className="text-cyan-400"> BUILT.</span>
-        </h2>
-      </div>
+    let frame
+    let last = performance.now()
+    let pos = el.scrollLeft
 
-      <div className="h-3" />
+    const tick = (now) => {
+      const dt = Math.min(now - last, 64)
+      last = now
 
-      {/* Infinite Project Movement */}
-      <div className="overflow-hidden pb-6">
-        <div className="project-track flex w-max">
+      const half = el.scrollWidth / 2
+      const paused =
+        hoverRef.current || touchHoldRef.current || draggingRef.current
 
-          {/* First Set */}
-          <div className="flex shrink-0 gap-4 sm:gap-6">
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.number}
-                project={project}
-              />
-            ))}
+      if (paused) {
+        // Follow wherever the user has scrolled to
+        pos = el.scrollLeft
 
-            {/* Gap */}
-            <div className="w-6 shrink-0" />
+        // Allow endless scrolling backwards too
+        if (pos <= 0 && half > 0) {
+          el.scrollLeft = half
+          dragStartRef.current.left += half
+          pos = half
+        }
+      } else {
+        const duration = window.innerWidth >= 1024 ? 35000 : 45000
+        pos += (half / duration) * dt
+      }
+
+      if (pos >= half) {
+        pos -= half
+        if (paused) dragStartRef.current.left -= half
+      }
+
+      if (!paused) el.scrollLeft = pos
+      else if (el.scrollLeft >= half) el.scrollLeft = pos
+
+      frame = requestAnimationFrame(tick)
+    }
+
+    frame = requestAnimationFrame(tick)
+
+    return () => {
+      cancelAnimationFrame(frame)
+      clearTimeout(resumeTimerRef.current)
+    }
+  }, [])
+
+  // Mouse drag
+  const handlePointerDown = (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return
+    draggingRef.current = true
+    dragMovedRef.current = false
+    dragStartRef.current = {
+      x: e.clientX,
+      left: scrollerRef.current.scrollLeft,
+      id: e.pointerId,
+    }
+  }
+
+  const handlePointerMove = (e) => {
+    if (!draggingRef.current) return
+    const el = scrollerRef.current
+    const dx = e.clientX - dragStartRef.current.x
+
+    if (!dragMovedRef.current && Math.abs(dx) > 5) {
+      dragMovedRef.current = true
+      el.setPointerCapture?.(dragStartRef.current.id)
+    }
+
+    if (dragMovedRef.current) {
+      el.scrollLeft = dragStartRef.current.left - dx
+    }
+  }
+
+  const endDrag = () => {
+    draggingRef.current = false
+    const el = scrollerRef.current
+    if (el && dragStartRef.current.id !== null) {
+      el.releasePointerCapture?.(dragStartRef.current.id)
+    }
+  }
+
+  // Don't open a project link if the user was dragging
+  const handleClickCapture = (e) => {
+    if (dragMovedRef.current) {
+      e.preventDefault()
+      e.stopPropagation()
+      dragMovedRef.current = false
+    }
+  }
+
+  // Touch: pause while touching, resume shortly after letting go
+  const handleTouchStart = () => {
+    clearTimeout(resumeTimerRef.current)
+    touchHoldRef.current = true
+  }
+
+  const handleTouchEnd = () => {
+    clearTimeout(resumeTimerRef.current)
+    resumeTimerRef.current = setTimeout(() => {
+      touchHoldRef.current = false
+    }, 2000)
+  }
+
+  return (
+    <section
+      id="projects"
+      className="mobile-section-anchor projects-section relative min-h-screen min-[1280px]:min-h-0 overflow-hidden bg-[#070B12] pt-10 pb-0 lg:overflow-visible lg:pt-16 lg:translate-x-[2.5rem] min-[1440px]:translate-x-48 min-[1440px]:-mt-28"
+    >
+      <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16 min-[1440px]:translate-x-36">
+
+        {/* Heading */}
+        <div>
+          <h2 className="mb-6 text-center font-['Space_Grotesk'] text-[1.9rem] font-semibold leading-[1] tracking-[-0.035em] sm:mb-8 sm:text-4xl lg:text-5xl">
+            THINGS I'VE
+            <span className="text-cyan-400"> BUILT.</span>
+          </h2>
+        </div>
+
+        <div className="h-3" />
+
+        {/* Auto-scrolling + manually scrollable track */}
+        <div
+          ref={scrollerRef}
+          className="project-scroller cursor-grab select-none overflow-x-auto overflow-y-hidden pb-6 active:cursor-grabbing"
+          onPointerEnter={(e) => {
+            if (e.pointerType === 'mouse') hoverRef.current = true
+          }}
+          onPointerLeave={() => {
+            hoverRef.current = false
+          }}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+          onClickCapture={handleClickCapture}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+          onDragStart={(e) => e.preventDefault()}
+        >
+          <div className="flex w-max">
+
+            {/* First Set */}
+            <div className="flex shrink-0 gap-4 sm:gap-6">
+              {projects.map((project) => (
+                <ProjectCard key={project.number} project={project} />
+              ))}
+
+              {/* Gap */}
+              <div className="w-6 shrink-0" />
+            </div>
+
+            {/* Duplicate Set */}
+            <div className="flex shrink-0 gap-6">
+              {projects.map((project) => (
+                <ProjectCard
+                  key={`duplicate-${project.number}`}
+                  project={project}
+                  duplicate
+                />
+              ))}
+
+              {/* Gap */}
+              <div className="w-6 shrink-0" />
+            </div>
+
           </div>
-
-          {/* Duplicate Set */}
-          <div className="flex shrink-0 gap-6">
-            {projects.map((project) => (
-              <ProjectCard
-                key={`duplicate-${project.number}`}
-                project={project}
-                duplicate
-              />
-            ))}
-
-            {/* Gap */}
-            <div className="w-6 shrink-0" />
-          </div>
-
         </div>
       </div>
 
-      
-    </div>
-
-    {/* Infinite Animation */}
-    <style>{`
-      @keyframes projectScroll {
-        from {
-          transform: translateX(0);
+      {/* Hide the scrollbar (scrolling still works) */}
+      <style>{`
+        .project-scroller {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
-
-        to {
-          transform: translateX(-50%);
+        .project-scroller::-webkit-scrollbar {
+          display: none;
         }
-      }
-
-      .project-track {
-  animation: projectScroll 45s linear infinite;
-}
-
-@media (min-width: 1024px) {
-  .project-track {
-    animation-duration: 35s;
-  }
-}
-
-      .project-track:hover {
-        animation-play-state: paused;
-      }
-    `}</style>
-  </section>
-)
+      `}</style>
+    </section>
+  )
 }
 
 export default Projects
