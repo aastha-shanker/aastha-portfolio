@@ -199,7 +199,8 @@ xl:h-[500px] xl:w-[350px]
             pt-16
             sm:pt-20
             lg:absolute
-            lg:left-1/3
+            lg:left-[calc(33.333%+48px)]
+
             lg:top-1/2
             max-w-[620px]
 lg:w-[480px]

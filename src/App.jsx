@@ -34,6 +34,7 @@ function App() {
 
         <main>
           <Hero />
+          <div className="h-24 sm:hidden" />
           <About />
           <div className="hidden lg:block lg:h-24 min-[1440px]:h-32" />
           <Experience />

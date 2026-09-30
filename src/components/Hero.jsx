@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import SocialLinks from './SocialLinks'
 import aasthaImage from '../assets/aastha.png'
+import aasthaBitmoji from '../assets/bitmoji.png'
 
 const roles = [
   'SOFTWARE DEVELOPER',
@@ -12,11 +13,20 @@ const roles = [
 
 function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
+  const [showBitmoji, setShowBitmoji] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setRoleIndex((current) => (current + 1) % roles.length)
     }, 2800)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowBitmoji((current) => !current)
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [])
@@ -65,7 +75,7 @@ function Hero() {
             </h1>
           </motion.div>
 
-          {/* CENTER — IMAGE */}
+          {/* CENTER — IMAGE / BITMOJI */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -87,7 +97,6 @@ function Hero() {
                   blur-[45px]
                   transition-all
                   duration-700
-                  group-hover:bg-cyan-400/[0.13]
                   sm:inset-[-15%]
                   sm:blur-[65px]
                 "
@@ -107,21 +116,82 @@ function Hero() {
                   xl:h-[500px]
                   xl:w-[350px]
                 "
+                style={{
+                  perspective: '1200px',
+                }}
               >
-                <img
-                  src={aasthaImage}
-                  alt="Aastha Shanker"
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    grayscale
-                    transition-all
-                    duration-700
-                    group-hover:scale-[1.025]
-                    group-hover:grayscale-0
-                  "
-                />
+                <AnimatePresence mode="wait">
+                  {!showBitmoji ? (
+                    <motion.div
+                      key="photo"
+                      initial={{
+                        rotateY: 90,
+                        opacity: 0,
+                      }}
+                      animate={{
+                        rotateY: 0,
+                        opacity: 1,
+                      }}
+                      exit={{
+                        rotateY: -90,
+                        opacity: 0,
+                      }}
+                      transition={{
+                        duration: 0.8,
+                        ease: 'easeInOut',
+                      }}
+                      className="absolute inset-0"
+                      style={{
+                        backfaceVisibility: 'hidden',
+                      }}
+                    >
+                      <img
+                        src={aasthaImage}
+                        alt="Aastha Shanker"
+                        className="
+                          h-full
+                          w-full
+                          object-cover
+                          grayscale
+                        "
+                      />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="bitmoji"
+                      initial={{
+                        rotateY: 90,
+                        opacity: 0,
+                      }}
+                      animate={{
+                        rotateY: 0,
+                        opacity: 1,
+                      }}
+                      exit={{
+                        rotateY: -90,
+                        opacity: 0,
+                      }}
+                      transition={{
+                        duration: 0.8,
+                        ease: 'easeInOut',
+                      }}
+                      className="absolute inset-0"
+                      style={{
+                        backfaceVisibility: 'hidden',
+                      }}
+                    >
+                      <img
+                        src={aasthaBitmoji}
+                        alt="Aastha Shanker Bitmoji"
+                        className="
+                          h-full
+                          w-full
+                          object-cover
+                        "
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 {/* Cyan X-ray wash */}
                 <div
@@ -135,37 +205,19 @@ function Hero() {
                     to-cyan-600/20
                     opacity-0
                     mix-blend-screen
-                    transition-opacity
-                    duration-500
-                    group-hover:opacity-100
-                  "
-                />
-
-                {/* Scan line */}
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    left-0
-                    top-0
-                    h-[1px]
-                    w-full
-                    -translate-y-full
-                    bg-cyan-300
-                    opacity-0
-                    shadow-[0_0_18px_#22d3ee]
-                    transition-all
-                    duration-1000
-                    group-hover:translate-y-[325px]
-                    group-hover:opacity-100
-                    sm:group-hover:translate-y-[430px]
-                    lg:group-hover:translate-y-[440px]
-                    xl:group-hover:translate-y-[500px]
                   "
                 />
 
                 {/* Subtle border */}
-                <div className="pointer-events-none absolute inset-0 border border-white/[0.08] transition-colors duration-500 group-hover:border-cyan-400/20" />
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    border
+                    border-white/[0.08]
+                  "
+                />
               </div>
             </div>
           </motion.div>
@@ -197,7 +249,8 @@ function Hero() {
                     duration: 0.45,
                     ease: 'easeOut',
                   }}
-                  className="hero-role-heading
+                  className="
+                    hero-role-heading
                     absolute
                     inset-x-0
                     top-0
