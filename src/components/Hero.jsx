@@ -26,7 +26,7 @@ function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setShowBitmoji((current) => !current)
-    }, 5000)
+    }, 1500)
 
     return () => clearInterval(interval)
   }, [])
@@ -120,7 +120,7 @@ function Hero() {
                   perspective: '1200px',
                 }}
               >
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                   {!showBitmoji ? (
                     <motion.div
                       key="photo"
@@ -137,7 +137,7 @@ function Hero() {
                         opacity: 0,
                       }}
                       transition={{
-                        duration: 0.8,
+                        duration: 0.45,
                         ease: 'easeInOut',
                       }}
                       className="absolute inset-0"
